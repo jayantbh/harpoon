@@ -1,0 +1,34 @@
+{
+  "name": "harpoon",
+  "description": "A JSON API generator and hosting service.",
+  "main": "index.js",
+  "authors": [
+    "Jayant Bhawal",
+    "Arpit Anand"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "json",
+    "api",
+    "hosting",
+    "generator"
+  ],
+  "homepage": "https://github.com/jayantbh/harpoon",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.2",
+    "angular-ui-router": "^0.2.18",
+    "moment": "^2.12.0",
+    "moment-timezone": "^0.5.2",
+    "angular-mocks": "^1.5.2",
+    "ngstorage": "^0.3.10"
+  }
+}

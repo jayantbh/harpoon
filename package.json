@@ -1,0 +1,33 @@
+{
+  "name": "harpoon",
+  "version": "1.0.0",
+  "description": "A JSON API generator and hosting service.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jayantbh/harpoon.git"
+  },
+  "keywords": [
+    "json",
+    "api",
+    "hosting",
+    "generator"
+  ],
+  "authors": [
+    "Jayant Bhawal",
+    "Arpit Anand"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jayantbh/harpoon/issues"
+  },
+  "homepage": "https://github.com/jayantbh/harpoon#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "dreamjs": "^0.1.5",
+    "express": "^4.13.4"
+  }
+}
