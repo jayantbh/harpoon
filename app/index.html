@@ -36,20 +36,23 @@
 	<link href="styles.css" rel="stylesheet" type="text/css">
 	<!-- /include -->
 
+	<script src="app.js"></script>
 	<!-- include: "type": "js", "files": "scripts/**/*.js" -->
-	<script src="scripts/app.js"></script>
+	<script src="scripts/angular_config.js"></script>
 	<!-- /include -->
 	<!-- include: "type": "js", "files": "_routes/**/*.js" -->
 	<script src="_routes/routes.js"></script>
 	<!-- /include -->
 	<!-- include: "type": "js", "files": "controllers/**/*.js" -->
 	<script src="controllers/main_controller.js"></script>
+	<script src="controllers/toolbar_controller.js"></script>
 	<!-- /include -->
 
 
 	<base href="/">
 </head>
-<body>
-<div ui-view="root"></div>
+<body layout="column">
+<div ui-view="toolbar" layout="row"></div>
+<div ui-view="root" flex layout="row"></div>
 </body>
 </html>

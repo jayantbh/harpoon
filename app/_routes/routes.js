@@ -13,6 +13,11 @@ harpoon.config(function ($stateProvider, $urlRouterProvider, $locationProvider) 
 					templateUrl: "views/home.html",
 					controller: "mainController",
 					controllerAs: "main"
+				},
+				"toolbar":{
+					templateUrl: "views/toolbar.html",
+					controller: "toolbarController",
+					"controllerAs": "tool"
 				}
 			}
 		});
