@@ -12,14 +12,14 @@ var port = process.env.PORT || 8080;
 app.use(compression({level: 6}));	//6 is default
 
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/app'));
 app.use(express.static(__dirname));
 
 app.get("*", function (req, res) {
-    console.log(req.url);
-    res.sendFile(__dirname + "/app/index.html");
+	console.log(req.url);
+	res.sendFile(__dirname + "/app/index.html");
 });
 
 http.listen(port, "0.0.0.0", function () {
-    console.log('Harpoon server running on localhost:' + port);
+	console.log('Harpoon server running on localhost:' + port);
 });
