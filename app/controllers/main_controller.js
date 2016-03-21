@@ -1,8 +1,9 @@
 /**
  * Created by Jayant Bhawal on 20-03-2016.
  */
-harpoon.controller("mainController", function () {
+harpoon.controller("mainController", function ($scope) {
 	var main = this;
+	var _aces = [];
 
 	var savedSchemas = [
 		{
@@ -37,4 +38,35 @@ harpoon.controller("mainController", function () {
 		}
 	];
 	main.schemas = savedSchemas;
+
+	var resizeEditor = function (_editor) {
+		_editor.container.style["height"] = window.innerHeight-128+"px";
+	};
+	var initializeEditors = function (_editor) {
+		_aces.push(_editor);
+		_editor.setAutoScrollEditorIntoView(true);
+		resizeEditor(_editor);
+
+		_editor.setOptions({
+			fontSize: "14pt"
+		});
+	};
+
+	$scope.formatEditor = function (_editor) {
+		_ace = _editor;
+		initializeEditors(_editor);
+	};
+	$scope.aceChanged = function (_editor) {
+		console.log($scope.code);
+	};
+	$scope.jsonViewer = function (_editor) {
+		_editor.setReadOnly(true);
+		initializeEditors(_editor);
+	};
+
+	window.onresize = function () {
+		_aces.forEach(function (ed, i) {
+			resizeEditor(ed);
+		});
+	};
 });

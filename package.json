@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/jayantbh/harpoon#readme",
   "dependencies": {
+    "ace-builds": "^1.2.2",
     "body-parser": "^1.15.0",
     "compression": "^1.6.1",
     "dreamjs": "^0.1.5",

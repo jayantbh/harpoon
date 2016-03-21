@@ -6,6 +6,7 @@ var app = express();
 var http = require('http').Server(app);
 var bodyParser = require('body-parser');
 var compression = require('compression');
+var dream = require ('dreamjs');
 
 var port = process.env.PORT || 8080;
 
@@ -15,8 +16,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(__dirname + '/app'));
 app.use(express.static(__dirname));
 
-app.get("*", function (req, res) {
-	console.log(req.url);
+app.get("/", function (req, res) {
 	res.sendFile(__dirname + "/app/index.html");
 });
 
