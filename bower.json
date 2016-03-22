@@ -34,6 +34,7 @@
     "angular-animate": "^1.5.2",
     "angular-ui-ace": "bower",
     "firebase": "^2.4.1",
-    "angularfire": "^1.1.4"
+    "angularfire": "^1.1.4",
+    "angular-toArrayFilter": "^1.0.1"
   }
 }

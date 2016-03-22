@@ -15,8 +15,10 @@ harpoon.controller("dialogController", function ($scope, $mdDialog, $rootScope, 
 	};
 
 	var socialAuth = function (service) {
-		firebaseRef.authWithOAuthPopup(service, function(error, authData) {
+		firebaseRef.authWithOAuthPopup(service, function (error, authData) {
 			console.log(error, authData);
+		}, {
+			scope: "email"
 		});
 	};
 	var anonAuth = function () {
@@ -29,10 +31,10 @@ harpoon.controller("dialogController", function ($scope, $mdDialog, $rootScope, 
 
 	dialog.signIn = function (service) {
 		if (!firebaseRef.getAuth()) {
-			if(service == "anonymous"){
+			if (service == "anonymous") {
 				anonAuth();
 			}
-			else{
+			else {
 				socialAuth(service);
 			}
 
