@@ -1,0 +1,43 @@
+{
+  "name": "harpoon",
+  "version": "1.0.0",
+  "description": "A JSON API generator and hosting service.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm start",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jayantbh/harpoon.git"
+  },
+  "keywords": [
+    "json",
+    "api",
+    "hosting",
+    "generator"
+  ],
+  "authors": [
+    "Jayant Bhawal",
+    "Arpit Anand"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jayantbh/harpoon/issues"
+  },
+  "homepage": "https://github.com/jayantbh/harpoon#readme",
+  "dependencies": {
+    "ace-builds": "^1.2.2",
+    "body-parser": "^1.15.0",
+    "compression": "^1.6.1",
+    "dummy-json": "^1.0.1",
+    "express": "^4.13.4"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-express-server": "^0.5.2",
+    "grunt-include-source": "^0.7.1",
+    "grunt-open": "^0.2.3"
+  }
+}

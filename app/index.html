@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" ng-app="harpoon">
+<head>
+	<meta charset="UTF-8">
+	<title>Harpoon</title>
+	<!--suppress JSUnresolvedLibraryURL -->
+	<script src="//localhost:35729/livereload.js"></script>
+
+	<meta name="Language" content="English">
+	<meta name="distribution" content="Global">
+	<meta name="Robots" content="INDEX,FOLLOW">
+
+	<meta property="og:title" content="Harpoon - JSON Generator and Hosting Service">
+	<meta property="og:site_name" content="Harpoon">
+	<!--<meta property="og:url" content="http://www.harpoonjson.com">-->
+	<meta property="og:description" content="A JSON API hosting and generator service.">
+	<meta property="og:image" content="_static/images/logo.png">
+	<meta property="og:type" content="website">
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="harpoon">
+	<meta name="twitter:title" content="Harpoon - JSON Generator and Hosting Service">
+	<meta name="twitter:description" content="A JSON API hosting and generator service.">
+	<meta name="twitter:image:src" content="_static/images/logo.png">
+
+	<link rel="stylesheet" href="../bower_components/angular-material/angular-material.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--Bower Components-->
+	<script src="../bower_components/angular/angular.min.js"></script>
+	<script src="../bower_components/angular-animate/angular-animate.min.js"></script>
+	<script src="../bower_components/angular-aria/angular-aria.min.js"></script>
+	<script src="../bower_components/angular-messages/angular-messages.min.js"></script>
+	<script src="../bower_components/angular-material/angular-material.min.js"></script>
+	<script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script src="../bower_components/firebase/firebase.js"></script>
+	<script src="../bower_components/angularfire/dist/angularfire.min.js"></script>
+	<script src="../bower_components/ace-builds/src-min-noconflict/ace.js"></script>
+	<script src="../bower_components/angular-ui-ace/ui-ace.min.js"></script>
+
+	<!-- include: "type": "css", "files": "**/*.css" -->
+	<link href="styles.css" rel="stylesheet" type="text/css">
+	<!-- /include -->
+
+	<script src="app.js"></script>
+	<!-- include: "type": "js", "files": "scripts/**/*.js" -->
+	<script src="scripts/angular_config.js"></script>
+	<!-- /include -->
+	<!-- include: "type": "js", "files": "_routes/**/*.js" -->
+	<script src="_routes/routes.js"></script>
+	<!-- /include -->
+	<!-- include: "type": "js", "files": "controllers/**/*.js" -->
+	<script src="controllers/main_controller.js"></script>
+	<script src="controllers/toolbar_controller.js"></script>
+	<!-- /include -->
+
+
+	<base href="/">
+</head>
+<body layout="column">
+<div ui-view="toolbar" layout="row"></div>
+<div ui-view="root" flex layout="row"></div>
+</body>
+</html>
