@@ -41,7 +41,7 @@ harpoon.controller("mainController", function ($scope, $http) {
 	main.schemas = savedSchemas;
 
 	var resizeEditor = function (_editor) {
-		_editor.container.style["height"] = window.innerHeight - 128 + "px";
+		_editor.container.style["height"] = window.innerHeight - (document.querySelector("md-toolbar").getBoundingClientRect().height)*2 + "px";
 	};
 	var initializeEditors = function (_editor) {
 		_aces.push(_editor);
@@ -78,6 +78,14 @@ harpoon.controller("mainController", function ($scope, $http) {
 					}
 				)
 		}
+	};
+
+	main.saveTemplate = function () {
+		//do something
+	};
+
+	main.copyToClipboard = function () {
+		//do something
 	};
 
 	window.onresize = function () {

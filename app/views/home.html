@@ -1,4 +1,4 @@
-<md-sidenav md-is-locked-open="true" class="md-whiteframe-z2">
+<md-sidenav md-is-locked-open="true" md-whiteframe="2">
 	<md-list flex>
 		<md-subheader class="md-no-sticky">{{main.schemas.length}} APIs</md-subheader>
 		<md-list-item class="md-3-line" ng-repeat="api in main.schemas track by $index">
@@ -14,10 +14,19 @@
 <md-content flex layout="row" id="content">
 	<div flex>
 		<md-toolbar>
-			<div layout="row" layout-align="space-between center" class="md-toolbar-tools">
-				<h2>Format JSON</h2>
+			<div layout="row" class="md-toolbar-tools">
+				<h2 flex-grow>Format JSON</h2>
 				<md-button ng-click="main.generate()">
+					<md-tooltip md-direction="top">
+						Process JSON
+					</md-tooltip>
 					<md-icon class="md-light">send</md-icon>
+				</md-button>
+				<md-button ng-click="main.saveTemplate()" ng-if="$root.auth">
+					<md-tooltip md-direction="top">
+						Save this template
+					</md-tooltip>
+					<md-icon class="md-light">save</md-icon>
 				</md-button>
 			</div>
 		</md-toolbar>
@@ -28,7 +37,10 @@
 		<md-toolbar>
 			<div layout="row" layout-align="space-between center" class="md-toolbar-tools">
 				<h2>Generated JSON</h2>
-				<md-button>
+				<md-button ng-click="main.copyToClipboard()">
+					<md-tooltip md-direction="top">
+						Copy to clipboard
+					</md-tooltip>
 					<md-icon class="md-light">content_copy</md-icon>
 				</md-button>
 			</div>
