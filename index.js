@@ -6,11 +6,12 @@ var app = express();
 var http = require('http').Server(app);
 var bodyParser = require('body-parser');
 var compression = require('compression');
-var dream = require ('dreamjs');
+var dummyjson = require('dummy-json');
 
 var port = process.env.PORT || 8080;
 
 app.use(compression({level: 6}));	//6 is default
+app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(__dirname + '/app'));
@@ -18,6 +19,10 @@ app.use(express.static(__dirname));
 
 app.get("/", function (req, res) {
 	res.sendFile(__dirname + "/app/index.html");
+});
+app.post("/generate", function (req, res) {
+	var data = dummyjson.parse(req.body.template);
+	res.send(data);
 });
 
 http.listen(port, "0.0.0.0", function () {

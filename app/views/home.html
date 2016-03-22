@@ -16,7 +16,7 @@
 		<md-toolbar>
 			<div layout="row" layout-align="space-between center" class="md-toolbar-tools">
 				<h2>Format JSON</h2>
-				<md-button>
+				<md-button ng-click="main.generate()">
 					<md-icon class="md-light">send</md-icon>
 				</md-button>
 			</div>
@@ -34,6 +34,6 @@
 			</div>
 		</md-toolbar>
 
-		<div ui-ace="{theme:'ambiance', mode:'json', showGutter:false, onLoad:jsonViewer}"></div>
+		<div ui-ace="{theme:'ambiance', mode:'json', showGutter:false, onLoad:jsonViewer}" ng-model="result"></div>
 	</div>
 </md-content>
