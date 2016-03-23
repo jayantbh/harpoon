@@ -39,6 +39,8 @@
     "grunt-contrib-watch": "^1.0.0",
     "grunt-express-server": "^0.5.2",
     "grunt-include-source": "^0.7.1",
-    "grunt-open": "^0.2.3"
+    "grunt-open": "^0.2.3",
+    "gulp": "^3.9.1",
+    "gulp-google-cdn": "^2.1.0"
   }
 }
