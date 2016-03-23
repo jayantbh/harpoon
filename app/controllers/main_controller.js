@@ -200,8 +200,8 @@ harpoon.controller("mainController", function ($scope, $http, firebaseRef, $mdTo
 		}
 	}
 
-	firebaseRef.onAuth(function (auth) {
-		auth = this.auth;
+	firebaseRef.onAuth(function (authData) {
+		auth = authData;
 		getTemplateData(auth);
 	});
 });
