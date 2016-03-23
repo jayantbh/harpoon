@@ -3,6 +3,7 @@
  */
 module.exports = function (grunt) {
 	grunt.initConfig({
+		port: process.env.PORT || 8080,
 		pkg: grunt.file.readJSON('package.json'),
 		express: {
 			options: {
@@ -39,7 +40,7 @@ module.exports = function (grunt) {
 		},
 		open: {
 			dev: {
-				path: 'http://localhost:8080/'
+				path: 'http://localhost:<%=port%>/'
 			}
 		},
 		includeSource: {

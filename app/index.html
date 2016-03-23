@@ -36,6 +36,7 @@
 	<script src="../bower_components/angularfire/dist/angularfire.min.js"></script>
 	<script src="../bower_components/ace-builds/src-min-noconflict/ace.js"></script>
 	<script src="../bower_components/angular-ui-ace/ui-ace.min.js"></script>
+	<script src="../bower_components/angular-toArrayFilter/toArrayFilter.js"></script>
 
 	<!-- include: "type": "css", "files": "**/*.css" -->
 	<link href="styles.css" rel="stylesheet" type="text/css">
@@ -45,10 +46,14 @@
 	<!-- include: "type": "js", "files": "scripts/**/*.js" -->
 	<script src="scripts/angular_config.js"></script>
 	<!-- /include -->
+	<!-- include: "type": "js", "files": "_filters/**/*.js" -->
+	<script src="_filters/keylength.js"></script>
+	<!-- /include -->
 	<!-- include: "type": "js", "files": "_routes/**/*.js" -->
 	<script src="_routes/routes.js"></script>
 	<!-- /include -->
 	<!-- include: "type": "js", "files": "controllers/**/*.js" -->
+	<script src="controllers/components/dialog.js"></script>
 	<script src="controllers/main_controller.js"></script>
 	<script src="controllers/toolbar_controller.js"></script>
 	<!-- /include -->

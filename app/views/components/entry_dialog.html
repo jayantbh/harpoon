@@ -1,0 +1,43 @@
+<md-dialog aria-label="Harpoon Sign In">
+	<form>
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2>Log In or Sign Up to Harpoon</h2>
+				<span flex></span>
+				<md-button class="md-icon-button" ng-click="dialog.cancel()">
+					<md-icon aria-label="Close dialog">close</md-icon>
+				</md-button>
+			</div>
+		</md-toolbar>
+		<md-dialog-content style="max-width:800px;max-height:810px; ">
+			<md-tabs md-dynamic-height md-border-bottom>
+				<md-tab label="Sign In">
+					<md-content class="md-padding">
+						<h3 class="md-headline">New or existing user?</h3>
+						<h3 class="md-title">Welcome back! Or, just welcome!</h3>
+						<md-button ng-click="dialog.signIn('google')">Sign in with Google</md-button>
+						<br>
+						<md-button ng-click="dialog.signIn('facebook')">Sign in with Facebook</md-button>
+						<!--<br>-->
+						<!--<md-button ng-click="dialog.signIn('twitter')">Sign in with Twitter</md-button>-->
+						<br>
+						<md-button ng-click="dialog.signIn('github')">Sign in with GitHub</md-button>
+					</md-content>
+				</md-tab>
+				<md-tab label="Try">
+					<md-content class="md-padding">
+						<h3 class="md-headline">Just trying it out?</h3>
+						<h3 class="md-title">Do nothing then!</h3>
+						<p>Without signing in, you can <br>use the JSON generator function. <br>To save templates and
+							host APIs,<br>you'll need to sign in.</p>
+					</md-content>
+				</md-tab>
+			</md-tabs>
+		</md-dialog-content>
+		<md-dialog-actions layout="row">
+			<md-button ng-click="dialog.cancel()">
+				Maybe Later
+			</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>
