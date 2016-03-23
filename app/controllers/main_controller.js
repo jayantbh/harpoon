@@ -1,7 +1,7 @@
 /**
  * Created by Jayant Bhawal on 20-03-2016.
  */
-harpoon.controller("mainController", function ($scope, $http, firebaseRef, $mdToast, $timeout) {
+harpoon.controller("mainController", function ($scope, $http, firebaseRef, $mdToast, $timeout, $mdDialog, $rootScope) {
 	var main = this;
 	var auth = firebaseRef.getAuth();
 	var _aces = [];
@@ -159,6 +159,20 @@ harpoon.controller("mainController", function ($scope, $http, firebaseRef, $mdTo
 		console.log("Deleting "+title);
 		$timeout(function () {
 			firebaseRef.child("users/" + btoa(auth[auth.provider].email) + "/templates/" + title).remove();
+		});
+	};
+
+	main.showLink = function (e,tpl) {
+		$rootScope.jsonTpl = tpl;
+		$rootScope.jsonTpl.url = window.location.href+tpl.title;
+		$rootScope.jsonTpl.email = btoa(auth[auth.provider].email);
+		$mdDialog.show({
+			controller: "dialogController",
+			controllerAs: "dialog",
+			templateUrl: "views/components/link_dialog.html",
+			parent: angular.element(document.body),
+			targetEvent: e,
+			clickOutsideToClose: true
 		});
 	};
 

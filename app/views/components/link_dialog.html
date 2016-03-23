@@ -1,8 +1,8 @@
-<md-dialog aria-label="Harpoon - Help">
+<md-dialog aria-label="Share Link">
 	<form>
 		<md-toolbar>
 			<div class="md-toolbar-tools">
-				<h2>Harpoon - Help</h2>
+				<h2>Harpoon - Link</h2>
 				<span flex></span>
 				<md-button class="md-icon-button" ng-click="dialog.cancel()">
 					<md-icon aria-label="Close dialog">close</md-icon>
@@ -11,15 +11,19 @@
 		</md-toolbar>
 		<md-dialog-content>
 			<div class="md-dialog-content">
-				<h2>How to use Harpoon</h2>
+				<h2>Link to {{$root.jsonTpl.title}} API.</h2>
+				<div flex layout="column">
+					<md-input-container flex>
+						<label>Link</label>
+						<input ng-model="$root.jsonTpl.url">
+					</md-input-container>
+				</div>
 				<p>
-					To create a new template, simply write the template and click on save.
-				</p>
-				<p>
-					To overwrite a previous template, save the current template with the old name,<br>a Toast will ask for confirmation, press YES.
-				</p>
-				<p>
-					To load a previous template, click on it's title in the list.
+					Hit this API with the following header:
+					<br>
+					<code>
+						'X-Auth-Token': '{{$root.jsonTpl.email}}'
+					</code>
 				</p>
 			</div>
 		</md-dialog-content>
