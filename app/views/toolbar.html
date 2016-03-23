@@ -1,6 +1,10 @@
 <md-toolbar md-whiteframe="4">
-	<div flex layout-align="space-between center" class="md-toolbar-tools">
+	<div flex layout-align="start center" class="md-toolbar-tools">
 		<h2>Harpoon</h2>
+		<span flex></span>
+		<md-button ng-click="tool.help($event)">
+			Help
+		</md-button>
 		<md-button ng-click="tool.entry($event)" ng-if="!$root.auth">
 			Sign In/Try
 		</md-button>

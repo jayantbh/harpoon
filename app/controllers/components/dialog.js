@@ -21,22 +21,10 @@ harpoon.controller("dialogController", function ($scope, $mdDialog, $rootScope, 
 			scope: "email"
 		});
 	};
-	var anonAuth = function () {
-		firebaseRef.authAnonymously(function (error, authData) {
-			console.log(error, authData);
-		}, {
-			remember: "sessionOnly"
-		});
-	};
 
 	dialog.signIn = function (service) {
 		if (!firebaseRef.getAuth()) {
-			if (service == "anonymous") {
-				anonAuth();
-			}
-			else {
-				socialAuth(service);
-			}
+			socialAuth(service);
 
 			firebaseRef.onAuth(function (data) {
 				$timeout(function () {

@@ -24,4 +24,15 @@ harpoon.controller("toolbarController", function ($scope, $mdDialog, firebaseRef
 		firebaseRef.unauth();
 		$rootScope.auth = null;
 	};
+
+	tool.help = function (e) {
+		$mdDialog.show({
+			controller: "dialogController",
+			controllerAs: "dialog",
+			templateUrl: "views/components/help_dialog.html",
+			parent: angular.element(document.body),
+			targetEvent: e,
+			clickOutsideToClose: true
+		});
+	}
 });

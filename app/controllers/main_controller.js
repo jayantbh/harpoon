@@ -71,10 +71,19 @@ harpoon.controller("mainController", function ($scope, $http, firebaseRef, $mdTo
 			console.log($scope.code);
 			$http.post("/generate", {template: $scope.code})
 				.then(function (data) {
-						console.log(data.data);
 						$scope.result = JSON.stringify(data.data, null, '\t');
+						$mdToast.show(
+							$mdToast.simple()
+								.textContent('JSON generated.')
+								.hideDelay(3000)
+						);
 					},
 					function (err) {
+						$mdToast.show(
+							$mdToast.simple()
+								.textContent('JSON could not be generated. Errors logged.')
+								.hideDelay(3000)
+						);
 						console.error(err);
 					}
 				)
@@ -136,6 +145,21 @@ harpoon.controller("mainController", function ($scope, $http, firebaseRef, $mdTo
 
 	main.copyToClipboard = function () {
 		//do something
+		console.log("Awaiting build.");
+	};
+
+	main.showCurrentTemplate = function(tpl){
+		$timeout(function () {
+			main.title = tpl.title;
+			$scope.code = tpl.code;
+		});
+	};
+
+	main.delete = function (title) {
+		console.log("Deleting "+title);
+		$timeout(function () {
+			firebaseRef.child("users/" + btoa(auth[auth.provider].email) + "/templates/" + title).remove();
+		});
 	};
 
 	window.onresize = function () {
@@ -160,7 +184,7 @@ harpoon.controller("mainController", function ($scope, $http, firebaseRef, $mdTo
 			list.once("value", getTemplates, getTemplatesError);
 			list.on("value", getTemplates, getTemplatesError);
 		}
-	}(auth);
+	}
 
 	firebaseRef.onAuth(function (auth) {
 		getTemplateData(auth);

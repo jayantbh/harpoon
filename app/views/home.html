@@ -3,7 +3,7 @@
 		<md-subheader class="md-no-sticky" ng-if="main.templates && $root.auth">{{(main.templates | keylength) || "No"}} APIs</md-subheader>
 		<md-subheader class="md-no-sticky" ng-if="!main.templates && $root.auth">Loading APIs...</md-subheader>
 		<md-subheader class="md-no-sticky" ng-if="!$root.auth">You need to sign in to add APIs.</md-subheader>
-		<form name="hrp" flex layout="column" layout-margin ng-if="$root.auth">
+		<form name="hrp" flex layout="column" layout-margin ng-show="$root.auth">
 			<md-input-container>
 				<label>Current JSON Template Title</label>
 				<input id="json-title" ng-model="main.title" name="title" required>
@@ -12,13 +12,22 @@
 				</div>
 			</md-input-container>
 		</form>
-		<md-list-item class="md-3-line" ng-if="$root.auth" ng-repeat="(title,tpl) in main.templates | toArray | orderBy: '-date' track by $index">
+		<md-list-item class="md-3-line"
+					  ng-if="$root.auth"
+					  ng-repeat="tpl in main.templates | toArray | orderBy: '-date' track by $index"
+					  ng-click="main.showCurrentTemplate(tpl)">
 			<!--<img ng-src="{{api.avatar}}?{{$index}}" class="md-avatar" alt="{{api.title}}"/>-->
 			<div class="md-list-item-text" layout="column">
 				<h3>{{tpl.title}}</h3>
 				<h4>{{tpl.date | date:"MMMM dd, yyyy 'at' HH:mm"}}</h4>
 				<p>{{tpl.code.length}} characters</p>
 			</div>
+			<md-button class="md-fab md-mini" ng-click="main.delete(tpl.title); $event.stopPropagation();">
+				<md-tooltip md-direction="top">
+					Delete {{tpl.title}}
+				</md-tooltip>
+				<md-icon class="md-light">delete</md-icon>
+			</md-button>
 		</md-list-item>
 		<md-list-item ng-if="!$root.auth">
 			<p>Not signed in.</p>
@@ -29,16 +38,17 @@
 	<div flex>
 		<md-toolbar>
 			<div layout="row" class="md-toolbar-tools">
-				<h2 flex-grow>Format JSON</h2>
+				<h2>Format JSON</h2>
+				<span flex></span>
 				<label for="json-title">
-					<md-button ng-click="main.saveTemplate(hrp);" ng-if="$root.auth">
+					<md-button class="md-fab" ng-click="main.saveTemplate(hrp);" ng-if="$root.auth">
 						<md-tooltip md-direction="top">
 							Save this template
 						</md-tooltip>
 						<md-icon class="md-light">save</md-icon>
 					</md-button>
 				</label>
-				<md-button ng-click="main.generate()">
+				<md-button class="md-fab" ng-click="main.generate()">
 					<md-tooltip md-direction="top">
 						Process JSON
 					</md-tooltip>
@@ -53,7 +63,7 @@
 		<md-toolbar>
 			<div layout="row" layout-align="space-between center" class="md-toolbar-tools">
 				<h2>Generated JSON</h2>
-				<md-button ng-click="main.copyToClipboard()">
+				<md-button class="md-fab" ng-click="main.copyToClipboard()">
 					<md-tooltip md-direction="top">
 						Copy to clipboard
 					</md-tooltip>

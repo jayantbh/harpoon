@@ -5,15 +5,16 @@ harpoon
 	.constant('firebaseRef', new Firebase('https://harpoon.firebaseio.com'))
 	.config(function ($mdThemingProvider) {
 		$mdThemingProvider.theme('default')
-			.primaryPalette('deep-purple')
-			.accentPalette('blue')
-			.warnPalette('red')
-			.backgroundPalette('grey');
+			.primaryPalette('green')
+			.accentPalette('light-green')
+			.warnPalette('yellow')
+			.backgroundPalette('grey')
+			//.dark();
 	})
 	.run(function ($rootScope,firebaseRef) {
 		$rootScope.auth = firebaseRef.getAuth();
 		firebaseRef.onAuth(function(authData) {
-			if (authData && !authData.anonymous) {
+			if (authData) {
 				// save the user's profile into the database so we can list users,
 				// use them in Security and Firebase Rules, and show profiles
 

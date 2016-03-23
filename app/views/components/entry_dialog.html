@@ -1,4 +1,4 @@
-<md-dialog aria-label="Mango (Fruit)">
+<md-dialog aria-label="Harpoon Sign In">
 	<form>
 		<md-toolbar>
 			<div class="md-toolbar-tools">
@@ -27,14 +27,15 @@
 				<md-tab label="Try">
 					<md-content class="md-padding">
 						<h3 class="md-headline">Just trying it out?</h3>
-						<h3 class="md-title">Sign In Anonymously.</h3>
-						<md-button class="md-raised md-primary md-accent" ng-click="dialog.signIn('anonymous')">Click to sign in Anonymously.</md-button>
+						<h3 class="md-title">Do nothing then!</h3>
+						<p>Without signing in, you can <br>use the JSON generator function. <br>To save templates and
+							host APIs,<br>you'll need to sign in.</p>
 					</md-content>
 				</md-tab>
 			</md-tabs>
 		</md-dialog-content>
 		<md-dialog-actions layout="row">
-			<md-button ng-click="dialog.cancel()" >
+			<md-button ng-click="dialog.cancel()">
 				Maybe Later
 			</md-button>
 		</md-dialog-actions>
