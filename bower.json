@@ -30,7 +30,7 @@
     "moment-timezone": "^0.5.2",
     "angular-mocks": "^1.5.2",
     "ngstorage": "^0.3.10",
-    "angular-material": "^1.0.6",
+    "angular-material": "master",
     "angular-animate": "^1.5.2",
     "angular-ui-ace": "bower",
     "firebase": "^2.4.1",

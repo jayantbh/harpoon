@@ -129,10 +129,21 @@ harpoon.controller("mainController", function ($scope, $http, firebaseRef, $mdTo
 	};
 
 	main.delete = function (title) {
-		console.log("Deleting "+title);
-		$timeout(function () {
-			firebaseRef.child("users/" + btoa(auth[auth.provider].email) + "/templates/" + title).remove();
-		});
+		$mdToast.show(
+			$mdToast.simple()
+				.textContent('Are you sure you want to delete '+title+'?')
+				.hideDelay(3000)
+				.action('YES')
+				.highlightAction(true)
+			)
+			.then(function (response) {
+				if (response == "ok") {
+					console.log("Deleting "+title);
+					$timeout(function () {
+						firebaseRef.child("users/" + btoa(auth[auth.provider].email) + "/templates/" + title).remove();
+					});
+				}
+			});
 	};
 
 	main.showLink = function (e,tpl) {

@@ -22,18 +22,20 @@
 				<h4>{{tpl.date | date:"MMMM dd, yyyy 'at' HH:mm"}}</h4>
 				<p>{{tpl.code.length}} characters</p>
 			</div>
-			<md-button class="md-fab md-mini" ng-click="main.showLink($event,tpl); $event.stopPropagation();">
-				<md-tooltip md-direction="top">
-					Link to {{tpl.title}} API
-				</md-tooltip>
-				<md-icon class="md-light">link</md-icon>
-			</md-button>
-			<md-button class="md-fab md-mini" ng-click="main.delete(tpl.title); $event.stopPropagation();">
-				<md-tooltip md-direction="top">
-					Delete {{tpl.title}}
-				</md-tooltip>
-				<md-icon class="md-light">delete</md-icon>
-			</md-button>
+			<!--<md-button class="md-fab md-secondary md-mini" ng-click="main.showLink($event,tpl); $event.stopPropagation();">-->
+				<!--<md-tooltip md-direction="top">-->
+					<!--Link to {{tpl.title}} API-->
+				<!--</md-tooltip>-->
+				<!--<md-icon class="md-light">link</md-icon>-->
+			<!--</md-button>-->
+			<!--<md-button class="md-fab md-secondary md-mini" ng-click="main.delete(tpl.title); $event.stopPropagation();">-->
+				<!--<md-tooltip md-direction="top">-->
+					<!--Delete {{tpl.title}}-->
+				<!--</md-tooltip>-->
+				<!--<md-icon class="md-light">delete</md-icon>-->
+			<!--</md-button>-->
+			<md-icon class="md-fab md-secondary md-mini" ng-click="main.showLink($event,tpl); $event.stopPropagation();">link</md-icon>
+			<md-icon class="md-fab md-secondary md-mini" ng-click="main.delete(tpl.title); $event.stopPropagation();">delete</md-icon>
 		</md-list-item>
 		<md-list-item ng-if="!$root.auth">
 			<p>Not signed in.</p>
