@@ -106,7 +106,16 @@ var customHelpers = {
 		var imageNumber = Math.round(Math.random()*96)
 		var men = "//randomuser.me/api/portraits/men/"+imageNumber+".jpg";
 		var women = "//randomuser.me/api/portraits/women/"+imageNumber+".jpg";
-		var avatar = (Math.round(Math.random()))?men:women;
+		if(typeof arguments[0] == "string"){
+			switch(arguments[0]){
+				case "male": avatar = men; break;
+				case "female": avatar = women; break;
+				//No default
+			}
+		}
+		else{
+			var avatar = (Math.round(Math.random()))?men:women;
+		}
 		return avatar;
 	}
 	//TODO: Make a `this` helper.
