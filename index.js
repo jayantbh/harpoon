@@ -12,20 +12,26 @@ var moment = require('moment');
 
 var firebaseRef = new Firebase("https://harpoon.firebaseio.com/");
 
-var randomInt = function(min, max) {
-	min = (typeof(min) == "number")?min:parseInt(min);
-	max = (typeof(max) == "number")?max:parseInt(max);
+var randomInt = function (min, max) {
+	min = (typeof(min) == "number") ? min : parseInt(min);
+	max = (typeof(max) == "number") ? max : parseInt(max);
 	return Math.floor(Math.random() * (max - min)) + min;
 };
 
 var parseMoment = function (str) {
-	switch (str){
-		case 'now':	return moment().format('X'); break;
-		case 'tomorrow':	return moment().add(1,'d').format('X'); break;
-		case 'yesterday':	return moment().subtract(1,'d').format('X'); break;
+	switch (str) {
+		case 'now':
+			return moment().format('X');
+			break;
+		case 'tomorrow':
+			return moment().add(1, 'd').format('X');
+			break;
+		case 'yesterday':
+			return moment().subtract(1, 'd').format('X');
+			break;
 		default:
 			str = str.replace(/(\\"|\\')/g, function (v) {
-				return v.replace("\\","");
+				return v.replace("\\", "");
 			});
 			return eval(str);
 	}
@@ -34,87 +40,91 @@ var customHelpers = {
 	random: function () {
 		var args = Array.prototype.slice.call(arguments);
 		args.pop();
-		if(args && args.length && Array.isArray(args)){
-			return args[Math.floor(Math.random()*args.length)];
+		if (args && args.length && Array.isArray(args)) {
+			return args[Math.floor(Math.random() * args.length)];
 		}
-		else{
+		else {
 			return 0;
 		}
 	},
 	momentstr: function () {
 		var args = Array.prototype.slice.call(arguments);
 		args.pop();
-		if(args && args.length && Array.isArray(args)){
+		if (args && args.length && Array.isArray(args)) {
 			var dateStr = "";
 			args.forEach(function (arg, i) {
-				if(dateStr.length){
+				if (dateStr.length) {
 					dateStr += " ";
 				}
 				dateStr += parseMoment(arg);
 			});
 			return dateStr;
 		}
-		else{
+		else {
 			return moment().format('X');
 		}
 	},
 	moment: function () {
 		var args = Array.prototype.slice.call(arguments);
 		args.pop();
-		if(args && args.length && args.length < 3 && Array.isArray(args)){
+		if (args && args.length && args.length < 3 && Array.isArray(args)) {
 			var dateStr = "";
-			if(args.length == 1){
+			if (args.length == 1) {
 				dateStr += parseMoment(args[0]);
 			}
-			else if(args.length == 2){
-				dateStr += randomInt(parseMoment(args[0]),parseMoment(args[1]));
+			else if (args.length == 2) {
+				dateStr += randomInt(parseMoment(args[0]), parseMoment(args[1]));
 			}
 			return dateStr;
 		}
-		else{
+		else {
 			return moment().format('X');
 		}
 	},
 	eval: function () {
 		var args = Array.prototype.slice.call(arguments);
 		args.pop();
-		if(args && args.length && args.length < 3 && Array.isArray(args)){
+		if (args && args.length && args.length < 3 && Array.isArray(args)) {
 			var evalStr = "";
 			args.forEach(function (arg, i) {
-				if(evalStr.length){
+				if (evalStr.length) {
 					evalStr += " ";
 				}
 				arg = arg.replace(/(\\"|\\')/g, function (v) {
-					return v.replace("\\","");
+					return v.replace("\\", "");
 				});
 				evalStr += eval(arg);
 			});
 			return evalStr;
 		}
-		else{
+		else {
 			return "nothing to eval";
 		}
 	},
 	objectId: function () {
-		var ID = (Math.random().toString(16)).substr(2,8);
-		ID += (Math.random().toString(16)).substr(2,8);
-		ID += (Math.random().toString(16)).substr(2,8);		//24 characters
-		ID += (Math.random().toString(16)).substr(2,24 - ID.length);
+		var ID = (Math.random().toString(16)).substr(2, 8);
+		ID += (Math.random().toString(16)).substr(2, 8);
+		ID += (Math.random().toString(16)).substr(2, 8);		//24 characters
+		ID += (Math.random().toString(16)).substr(2, 24 - ID.length);
 		return ID;
 	},
 	avatar: function () {
-		var imageNumber = Math.round(Math.random()*96)
-		var men = "//randomuser.me/api/portraits/men/"+imageNumber+".jpg";
-		var women = "//randomuser.me/api/portraits/women/"+imageNumber+".jpg";
-		if(typeof arguments[0] == "string"){
-			switch(arguments[0]){
-				case "male": avatar = men; break;
-				case "female": avatar = women; break;
+		var imageNumber = Math.round(Math.random() * 96)
+		var men = "//randomuser.me/api/portraits/men/" + imageNumber + ".jpg";
+		var women = "//randomuser.me/api/portraits/women/" + imageNumber + ".jpg";
+		if (typeof arguments[0] == "string") {
+			switch (arguments[0]) {
+				case "male":
+					avatar = men;
+					break;
+				case "female":
+					avatar = women;
+					break;
 				//No default
 			}
 		}
-		else{
-			var avatar = (Math.round(Math.random()))?men:women;
+		else {
+			var avatar = (Math.round(Math.random())) ? men : women;
 		}
 		return avatar;
 	}
@@ -123,10 +133,11 @@ var customHelpers = {
 
 var port = process.env.PORT || 8080;
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  // res.header("Access-Control-Allow-Headers", "*");
-  next();
+app.use(function (req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", Object.keys(req.headers).join(","));
+	console.log("H> ", Object.keys(req.headers).join(","));
+	next();
 });
 
 app.use(compression({level: 6}));	//6 is default
@@ -140,25 +151,25 @@ app.get("/", function (req, res) {
 });
 app.get("/:title", function (req, res) {
 	var token = req.get('X-Auth-Token');
-	if(token){
-		var path = "users/"+token+"/templates/"+req.params.title+"/code";
+	if (token) {
+		var path = "users/" + token + "/templates/" + req.params.title + "/code";
 		firebaseRef.child(path).once("value", function (snap) {
 			var data = snap.val();
-			if(data){
-				data = dummyjson.parse(data,{helpers: customHelpers});
+			if (data) {
+				data = dummyjson.parse(data, {helpers: customHelpers});
 				res.send(data);
 			}
-			else{
+			else {
 				res.send("{}");
 			}
 		});
 	}
-	else{
+	else {
 		res.status(403).send("Missing required header.");
 	}
 });
 app.post("/generate", function (req, res) {
-	var data = dummyjson.parse(req.body.template,{helpers: customHelpers});
+	var data = dummyjson.parse(req.body.template, {helpers: customHelpers});
 	res.send(data);
 });
 
