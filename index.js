@@ -36,10 +36,23 @@ var parseMoment = function (str) {
 			return eval(str);
 	}
 };
+
+var generateObjectId = function () {
+	var ID = (Math.random().toString(16)).substr(2, 8);
+	ID += (Math.random().toString(16)).substr(2, 8);
+	ID += (Math.random().toString(16)).substr(2, 8);		//24 characters
+	ID += (Math.random().toString(16)).substr(2, 24 - ID.length);
+	return ID;
+};
 var customHelpers = {
 	random: function () {
 		var args = Array.prototype.slice.call(arguments);
 		args.pop();
+
+		if(args.indexOf('objectId')){
+			args[args.indexOf('objectId')] = generateObjectId();
+		}
+
 		if (args && args.length && Array.isArray(args)) {
 			return args[Math.floor(Math.random() * args.length)];
 		}
@@ -102,11 +115,7 @@ var customHelpers = {
 		}
 	},
 	objectId: function () {
-		var ID = (Math.random().toString(16)).substr(2, 8);
-		ID += (Math.random().toString(16)).substr(2, 8);
-		ID += (Math.random().toString(16)).substr(2, 8);		//24 characters
-		ID += (Math.random().toString(16)).substr(2, 24 - ID.length);
-		return ID;
+		return generateObjectId();
 	},
 	avatar: function () {
 		var imageNumber = Math.round(Math.random() * 96)
