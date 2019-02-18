@@ -41,7 +41,7 @@
     "grunt-express-server": "^0.5.2",
     "grunt-include-source": "^0.7.1",
     "grunt-open": "^0.2.3",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.0",
     "gulp-google-cdn": "^3.0.0"
   }
 }
