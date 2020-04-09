@@ -39,7 +39,7 @@
     "grunt": "^0.4.5",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-express-server": "^0.5.2",
-    "grunt-include-source": "^0.7.1",
+    "grunt-include-source": "^1.1.0",
     "grunt-open": "^0.2.3",
     "gulp": "^4.0.0",
     "gulp-google-cdn": "^3.0.0"
